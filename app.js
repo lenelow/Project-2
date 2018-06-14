@@ -60,6 +60,6 @@ app.use(function(err, req, res, next) {
 app.use('/', usersController)
 
 app.set('port', process.env.PORT || 3000)
-app.listen(app.get('port', () => console.log("server is running"));
+app.listen(app.get('port', () => console.log("server is running")))
 
 module.exports = app;
