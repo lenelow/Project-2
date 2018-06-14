@@ -8,7 +8,7 @@ var passport = require('passport');
 var bodyParser = require('body-parser');
 var hbs = require('hbs');
 var usersController = require('./controllers/users');
-var sys = require('util');
+var util = require('util')
 
 
 require('./config/passport')(passport)
