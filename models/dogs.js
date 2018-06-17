@@ -25,5 +25,9 @@ const Dog = new Schema ({
     additionalInfo: {
         type: String,
         max: 500
+    },
+    user: {
+        type: Schema.Types.ObjectId, 
+        ref: "Users"
     }
 })

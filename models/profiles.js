@@ -6,7 +6,7 @@ const Profile = new Schema ({
         type: Schema.Types.ObjectId, 
         ref: "Users"
     },
-    loction: {
+    location: {
         zipcode: {
             type: String, 
             min: 5, 
