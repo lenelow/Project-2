@@ -2,28 +2,28 @@ const Dog = require("../models/dogs");
 const User = require("../models/users")
 
 module.exports = {
-    showUsersDogs: (req, res) => {
-        User.findOne({ _id: req.params.id })
+    showUsersDogs: (req, res) => { // see all of a user's dogs
+        User.findById(req.user.id)
         .then(function(user){
             res.render('usersDogs/index', {dogs: user.dogs})
         })
     },
-    show: (req, res) => {
+    show: (req, res) => { // see all dogs
         Dog.find({}).then(function(dog) {
             res.render('dogs/index', { dogs: dog })
         })
     },
-    showDog: (req, res) => {
+    showDog: (req, res) => { // shows one dog
         Dog.findById(req.params.id).populate('user').then(dog =>{
             res.render('dogs/show', {dogs: dog})
         })
     },
-    editForm: (req, res) => {
+    editForm: (req, res) => { // renders edit dog form
         res.render('dogForm')
     },
     edit: (req, res) => {
-        Dog.findByIdAndUpdate(req.params.dogsId, req.body.dogs).then(dog => {
-            User.findOne({ _id: req.params.userId })
+        Dog.findByIdAndUpdate(req.params.id, req.body.dogs).then(dog => { // handles edit dog form
+            User.findById(req.user.id)
             .then(function(user){
               user.dogs.push(req.body.dogs)
               user.save().then(user =>{
@@ -32,7 +32,13 @@ module.exports = {
             })
         })
     },
-    create: (req, res) => {
+
+// render profile create form
+    createForm: (req, res) => {
+        res.render('dogForm')
+    },
+
+    create: (req, res) => { // handles profile create
         var dogFields = {};
         dogFields.user = req.user.id;
         dogFields.name = req.body.name;
@@ -48,20 +54,24 @@ module.exports = {
                 res.redirect('users/dogs')
             })
         })
-    }
-    // Display profile create form (add dog to account)
-    // exports.add_dog_get = function(req, res, next) {       
-    //     res.render('addDog_form', { title: 'Add Dog'});
-
-    // Handle profile create 
-    
-
-    // Display edit profile form (change details, photos) 
-    // exports.edit_dog_get = function(req, res, next) {       
-    //     res.render('editDog_form', { title: 'Edit Dog'});
-
-    // Handle profile update 
-       
+    },
+    destroy: (req, res) => {// Handle dog delete (button--no form necessary)
+        Dog.findByIdAndRemove(req.params.id)
+        .then(() => {
+           User.findById(req.user.id).then(user =>{
+            const removeDog = user.dogs
+            .map(dog => dog.id) // turns dog into dog id
+            .indexOf(req.params.id) // find index of dog with that id
+            user.dogs.splice(removeDog, 1) // removes that dog specifically
+            user.save().then(()=>{
+                res.redirect('/profile/:id')
+            })
+           }) 
+        })
+        
+    }  
    
-    // Handle dog delete (button--no form necessary)
+      
+      module.exports = router;
+      
 }
