@@ -1,0 +1,9 @@
+{{#if currentUser.profile}}
+<div class="showMessages">
+    <a class="my-messages" href="{{currentUser.id}}/messages"></a>
+    <h1>Your Messages</h1>
+    <ul>{{currentUser.messages}}</ul>
+</div>
+<div class="linkTo">
+    <a href="{{currentUser}}/profiles/show" class="viewMyProfile">Back to profile</a>
+</div>

@@ -1,0 +1,12 @@
+<section class="form-container">
+  <h2>New Message</h2>
+  <form action="/message" method="post" class="message-form">
+    <p class="input-field">
+      <textarea name="message[content]" cols="30" rows="10" placeholder="Message"></textarea>
+    </p>
+    <p class="input-field">
+      <input type="submit" value="Message" class="btn btn-default">
+    </p> 
+  </form>
+</section>
+{{!-- if message sent successfully, req.flash message "Message Sent" --}}
