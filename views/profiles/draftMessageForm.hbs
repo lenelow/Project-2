@@ -7,6 +7,9 @@
     <p class="input-field">
       <input type="submit" value="Message" class="btn btn-default">
     </p> 
+    {{#if message}}
+    <p class="alert">{{message}}</p>
+    {{/if}}
   </form>
 </section>
 {{!-- if message sent successfully, req.flash message "Message Sent" --}}

@@ -1,0 +1,28 @@
+<section class="row">
+  <h2>Create a Profile for Your Dog:</h2>
+
+  {{#if message}}
+    <p class="alert">{{message}}</p>
+  {{/if}}
+  
+  <form action="/" method="POST" class="auth-form">
+    <p class="input-field">
+      <input type="text" name="name" placeholder="Name" id="name">
+    </p>
+    <p class="input-field">
+      <textarea name="bio" placeholder="Tell us about your dog...">
+    </p>
+    <p class ="input-field">
+      <input type="number" name="weight" placeholder="Weight" id="weight">
+    </p>
+    <p class ="input-field">
+      <input type="number" name="age" placeholder="Age" id="age">
+    </p>
+    <p class ="input-field">
+      <input type="file" name="avatar" accept="image/*" id="image">
+    </p>
+    <p class="input-field">
+      <input type="submit" value="Create Profile" class="btn btn-default">
+    </p>
+  </form>
+</section>
