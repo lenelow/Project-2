@@ -35,7 +35,8 @@ module.exports = function(passport) {
 
                 newUser.save(function(err) {
                     if(err) throw err;
-                        return callback(null, newUser)
+                        return callback(null, newUser,
+                        req.flash("errorMessage", "error"))
                     }
                 }) 
             }
