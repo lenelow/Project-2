@@ -1,0 +1,30 @@
+<div class="showProfile">
+  <div class="profile-content">
+    <a class="profile-title" href="/profile/{{id}}"></a>
+    
+ {{!-- user.name h1--}}
+ {{!-- user.avatar src/img--}}
+ {{!-- location: {
+        zipcode: {
+            type: Number, 
+            min: 5, 
+            max: 10
+        }
+    },
+    bio: {
+        type: String,{{content}}
+        max: 500 
+    },
+    interests: [{
+        title: String,{{content}}
+        current: Boolean,
+    }] --}}
+ 
+ 
+  </div>
+  <div class="card-action">
+    <a href="/user/{{ author.id }}" class="">{{ author.local.email }}</a>
+    <span class="tweet__date">{{ createdAt }}</span>
+    <span class="tweet_comments">{{ comments.length }} Comments</span>
+  </div>
+</div>

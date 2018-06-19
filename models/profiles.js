@@ -8,7 +8,7 @@ const Profile = new Schema ({
     },
     location: {
         zipcode: {
-            type: String, 
+            type: Number, 
             min: 5, 
             max: 10
         }

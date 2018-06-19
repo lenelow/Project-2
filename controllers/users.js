@@ -9,13 +9,13 @@ module.exports = {
 
   // render sign up form
   signUpForm: (req, res) => {
-    res.render('signup', { message: req.flash('signupMessage') })
+    res.render('users/signup', { message: req.flash('signupMessage') })
   },
 
   // handle signup
   signUp: (req, res) => {
     var signupStrategy = passport.authenticate('local-signup', {
-      successRedirect: '/',
+      successRedirect: '/profile/new',
       failureRedirect: '/signup',
       failureFlash: true
     })
@@ -24,7 +24,7 @@ module.exports = {
 
   // render login form
   loginForm: (req, res) => {
-    res.render('login', { message: req.flash('loginMessage') })
+    res.render('users/login', { message: req.flash('loginMessage') })
   },
 
   // handle login login

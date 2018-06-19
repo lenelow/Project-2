@@ -7,7 +7,7 @@ module.exports = {
     Profile.findOne({ user: req.params.id })
       .populate('user', ['name', 'avatar'])
       .then(function (profile) {
-        res.render('showProfile', { profile })
+        res.render('profile/show', { profile })
       })
   },
 

@@ -6,6 +6,9 @@ var logger = require('logger')
 var session = require('express-session')
 var passport = require('passport')
 var bodyParser = require('body-parser')
+var flash = require('req-flash');
+var multer = require('multer');
+var upload = multer({ dest: 'uploads/' })
 
 var usersRoute = require('./routes/users')
 var dogsRoute = require('./routes/dogs')

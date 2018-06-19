@@ -5,21 +5,21 @@ module.exports = { // object of functions for routes
   showUsersDogs: (req, res) => { // see all of a user's dogs
     User.findById(req.user.id)
       .then(function (user) {
-        res.render('showUsersDogs', {dogs: user.dogs})
+        res.render('users/showUserDogs', {dogs: user.dogs})
       })
   },
-  show: (req, res) => { // see all dogs
+  show: (req, res) => { // show all dogs
     Dog.find({}).then(function (dog) {
-      res.render('dogIndex', { dogs: dog })
+      res.render('dogs/index', { dogs: dog })
     })
   },
-  showDog: (req, res) => { // shows one dog
+  showDog: (req, res) => { // show one dog
     Dog.findById(req.params.id).populate('user').then(dog => {
-      res.render('showDog', {dogs: dog})
+      res.render('dogs/show', { dogs: dog })
     })
   },
   editForm: (req, res) => { // renders edit dog form
-    res.render('dogForm')
+    res.render('dogs/dogForm')
   },
   edit: (req, res) => {
     Dog.findByIdAndUpdate(req.params.id, req.body.dogs).then(dog => { // handles edit dog form
@@ -27,7 +27,7 @@ module.exports = { // object of functions for routes
         .then(function (user) {
           user.dogs.push(req.body.dogs)
           user.save().then(user => {
-            res.redirect('users/show')
+            res.redirect('profiles/show')
           })
         })
     })
