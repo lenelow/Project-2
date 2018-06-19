@@ -56,6 +56,11 @@ app.use(function (err, req, res, next) {
   res.render('error')
 })
 
+app.use((req, res, next) => {
+  global.currentUser = req.user
+  res.locals.currentUser = req.user
+  next()
+})
 app.use('/users', usersRoute)
 app.use('/dogs', dogsRoute)
 app.use('/profiles', profilesRoute)

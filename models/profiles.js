@@ -17,10 +17,10 @@ const Profile = new Schema ({
         type: String,
         max: 500 
     },
-    interests: [{
+    interests: {
         title: String,
-        current: Boolean,
-    }]
+        current: Boolean
+    }
 });
 
 module.exports = mongoose.model("Profiles", Profile);

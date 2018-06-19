@@ -68,5 +68,14 @@ module.exports = { // object of functions for routes
           })
         })
       })
+  },
+  
+  requireAuth: function(req, res, next) {
+    if (req.isAuthenticated()) {
+      next();
+    } else {
+      res.redirect("/");
+    }
   }
+
 }
