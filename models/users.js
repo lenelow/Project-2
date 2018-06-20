@@ -22,12 +22,12 @@ const User = new Schema ({
     dogs: [Dogs]
 });
 
-User.methods.encrypt = function(password) { // hash the password received and save it as encrypted
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-};
-
 User.methods.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
 };
 
-module.exports = mongoose.model("Users", User);
+User.methods.encrypt = function(password) { // hash the password received and save it as encrypted
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+};
+
+module.exports = mongoose.model('Users', User);

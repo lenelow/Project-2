@@ -46,3 +46,11 @@ module.exports = {
   // search
 
 }
+
+module.exports = {
+  getLogin: loginForm,
+  postLogin: login,
+  getSignup: signupForm,
+  postSignup: signup,
+  getLogout: logout,
+};

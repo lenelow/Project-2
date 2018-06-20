@@ -9,7 +9,7 @@ router.get('/login', userController.loginForm)// render login form
 router.post('/login', userController.login)// handle login inf(home page or error)
 router.get('/logout', userController.logout)// log out
 router.get('/signup', userController.signUpForm)// render signup form
-router.post('/signup', upload.single('avatar'), userController.signUp)// add new account to database and redirect to profile create
+router.post('/signup', upload.single('avatar'), userController.signup)// add new account to database and redirect to profile create
 
 //search
 

@@ -10,6 +10,7 @@ var flash = require('req-flash')
 var multer = require('multer')
 var upload = multer({ dest: 'upload/' })
 var hbs = require('hbs')
+const methodOverride = require('method-override')
 
 var router = require('./routes/index')
 
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(cookieParser())
+app.use(methodOverride('_method'))
 
 app.use(function (req, res, next) {
   res.locals.currentUser = req.user
