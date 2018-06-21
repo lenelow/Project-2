@@ -20,47 +20,47 @@ module.exports = function (passport) {
     dogField: 'dogs',
     passReqToCallback: true // pass request to callback function
   }, function (req, email, password, callback) {
-    User.findOne({ email }).then(user => {
+    User.findOne({ email }), function(err, user) {
+      if (err) return callback(err)
       if (user) {
         return callback(null, false,
-          req.flash('signupMessage', 'this email is already taken'))
+          req.flash('signupMessage', 'This email is already taken'))
       } else {
         let newUser = new User()
                 newUser.email = email
                 newUser.password = newUser.encrypt(password)
-                newUser.name = name
-                newUser.avatar = req.file.filename
+                newUser.name = req.body.name
+                newUser.avatar = req.body.avatar
                 newUser.dogs = []
             
 
                 newUser.save(function (err) {
           if (err) throw err
-                        return callback(null, newUser,
+          return callback(null, newUser,
             req.flash('errorMessage', 'error'))
         })
       }
-    })
+    }
   }))
 
   passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-  }, function (req, email, password, done) {
+  }, function (req, email, password, user, callback) {
     User.findOne({ email }), function (err, user) {
       if (err) {
-        return done(err)
+        return callback(err)
       }
-    }
 
     if (!user) {
-      return done(null, false, req.flash('loginMessage', 'No user exists with that email'))
+      return callback(null, false, req.flash('loginMessage', 'No user exists with that email'))
     }
     if (!user.validPassword(password)) {
-      return done(null, false, req.flash('loginMessage', 'Wrong password. Try again.'))
+      return callback(null, false, req.flash('loginMessage', 'Wrong password. Try again.'))
     }
 
-    return done(null, user)
-  }
-  ))
+    return callback(null, user)
+  })
+}))  
 }

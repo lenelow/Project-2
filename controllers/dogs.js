@@ -69,12 +69,11 @@ module.exports = { // object of functions for routes
         })
       })
   },
-  
-  requireAuth: function(req, res, next) {
+  requireAuth: function (req, res, next) {
     if (req.isAuthenticated()) {
-      next();
+      // return next()
     } else {
-      res.redirect("/");
+      res.redirect('/')
     }
   }
 

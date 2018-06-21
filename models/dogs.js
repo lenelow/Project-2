@@ -1,7 +1,7 @@
 const mongoose = require('../db/connection')
 const Schema = mongoose.Schema
 
-const Dog = new Schema({
+const DogSchema = new Schema({
   name: {
     type: String,
     required: true
@@ -28,8 +28,10 @@ const Dog = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'Users'
+    ref: 'User'
   }
 })
 
-module.exports = mongoose.model('Dogs', Dog)
+const Dog = mongoose.model('Dogs', DogSchema)
+module.exports = Dog
+module.exports = DogSchema

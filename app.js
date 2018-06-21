@@ -10,11 +10,9 @@ var flash = require('req-flash')
 var multer = require('multer')
 var upload = multer({ dest: 'upload/' })
 var hbs = require('hbs')
-const methodOverride = require('method-override')
+var methodOverride = require('method-override')
 
 var router = require('./routes/index')
-
-require('./config/passport')(passport)
 
 var app = express()
 
@@ -27,7 +25,7 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 })) // session middleware
-app.use(require('flash')())
+app.use(flash())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -38,7 +36,10 @@ app.use(passport.session())
 app.use(cookieParser())
 app.use(methodOverride('_method'))
 
+require('./config/passport')(passport)
+
 app.use(function (req, res, next) {
+  global.currentUser = req.user
   res.locals.currentUser = req.user
   next()
 })
@@ -54,7 +55,8 @@ app.use(function (err, req, res, next) {
   res.render('error')
 })
 
-app.use(router)
+var routes = require('./routes')
+app.use(routes)
 
 var port = process.env.PORT || 4000;
 app.listen(port, () => console.log('server is running'));

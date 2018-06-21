@@ -1,5 +1,6 @@
-const User = require('../models/users')
-var passport = require('passport')
+// const User = require('../models/users')
+const passport = require('passport')
+require('../config/passport')(passport) 
 
 module.exports = {
   // go home
@@ -8,14 +9,14 @@ module.exports = {
   },
 
   // render sign up form
-  signUpForm: (req, res) => {
+  signupForm: (req, res) => {
     res.render('users/signup', { message: req.flash('signupMessage') })
   },
 
   // handle signup
-  signUp: (req, res) => {
+  signup: (req, res) => {
     var signupStrategy = passport.authenticate('local-signup', {
-      successRedirect: '/profile/new',
+      successRedirect: '/profiles/new',
       failureRedirect: '/signup',
       failureFlash: true
     })
@@ -28,13 +29,13 @@ module.exports = {
   },
 
   // handle login login
-  login: (req, res) => {
+  login: (req, res, next) => {
     var loginProperty = passport.authenticate('local-login', {
       successRedirect: '/',
       failureRedirect: '/login',
-      loginProperty: true
+      failureFlash: true
     })
-    return loginProperty(req, res)
+    return loginProperty(req, res, next)
   },
 
   // GET /logout
@@ -47,10 +48,4 @@ module.exports = {
 
 }
 
-module.exports = {
-  getLogin: loginForm,
-  postLogin: login,
-  getSignup: signupForm,
-  postSignup: signup,
-  getLogout: logout,
-};
+

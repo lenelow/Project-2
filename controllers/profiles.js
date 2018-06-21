@@ -7,12 +7,12 @@ module.exports = {
     Profile.findOne({ user: req.params.id })
       .populate('user', ['name', 'avatar'])
       .then(function (profile) {
-        res.render('profile/show', { profile })
+        res.render('profiles/show', { profile })
       })
   },
 
-  new: (req, res) => {// render new profile form
-    res.render('profileForm')
+  new: (req, res) => { // render new profile form
+    res.render('profiles/profileForm')
   },
 
   // Handle profile create
@@ -28,20 +28,20 @@ module.exports = {
     if (req.body.interests) {
       profileFields.interests = req.body.interests
     }
-    Profile.create(profileFields).then(profile => {
+    Profile.create(profileFields).then(() => {
       res.redirect('/')
     })
   },
 
   // Display edit profile form
   editForm: (req, res) => {
-    res.render('profileForm')
+    res.render('profiles/profileForm')
   },
 
   // Handle edit profile
   edit: (req, res) => {
     Profile.findOneAndUpdate({ user: req.user.id }, req.body.profile).then(profile => {
-      res.redirect('/profile/' + profile.id)
+      res.redirect('/profiles/' + profile.id)
     })
   },
   // change photo
@@ -64,11 +64,11 @@ module.exports = {
     })
   },
 
-  requireAuth: function(req, res, next) {
+  requireAuth: function (req, res, next) {
     if (req.isAuthenticated()) {
-      next();
+      // return next()
     } else {
-      res.redirect("/");
+      res.redirect('/')
     }
   }
 
