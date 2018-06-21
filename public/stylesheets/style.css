@@ -3,23 +3,39 @@ ul {
 }
 li {
     display: inline-block;
-    margin: 10px;
+    margin: 15px 10px 10px 10px;
     font-size: 20px;
 }
 
 .loginForm {
     margin-top: 4vh;
-    width: 40%;
+    width: 30%;
 }
 
-h1 {
+.logo {
     font-size: 40px;
     text-align: right;
     width: 30vw;
     float: right;
     margin-right: 20px;
+    font-family: 'Comfortaa', cursive;
+    margin-top: -25px;
 }
 
 .login {
     margin-top: 9vh;
+}
+
+.welcome {
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-size: 30px;
+    line-height: 1;
+}
+
+.signupForm {
+    width: 50vw;
+}
+
+.button {
+    background-color: #AFBDB8;
 }
