@@ -1,6 +1,6 @@
 Your project idea (a brief 2-3 sentence description of your app)
 
-DoggyDate is an app that puts dog owners in touch with each other. It allows dog lovers to meet other dog lovers, dogs to meet other dogs.
+DoggyDate is an app that puts dog owners in touch with each other. It allows dog lovers to meet other dog lovers, dogs to meet other dogs. Users sign up and make a profile for themselves and their dogs. 
 
 My Models:
 User:
