@@ -18,13 +18,13 @@ const ProfileSchema = new Schema({
     max: 500
   },
   interests: {
-     dogInterest: {
-        type: Boolean
-      },
-      humanInterest: {
-        type: Boolean
-      }
+    dogInterest: {
+      type: Boolean
+    },
+    humanInterest: {
+      type: Boolean
     }
+  }
 })
 
 const Profile = mongoose.model('Profiles', ProfileSchema)

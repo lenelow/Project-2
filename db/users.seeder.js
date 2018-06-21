@@ -12,7 +12,7 @@
 //           email: "bob@gmail.com",
 //           password: createPassword("bob")
 //         }).then(user => {
-        // user is the user object we just made using .create
+//         user is the user object we just made using .create
   
 //         // Promise.all will run all of the provided functions simultaneously, and return when they're finished
 //           Dog.create({
@@ -44,4 +44,4 @@
 //   });
 
 
-//     export default UsersSeeder;
+    

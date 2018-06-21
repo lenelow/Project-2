@@ -29,7 +29,7 @@ module.exports = {
       profileFields.interests = req.body.interests
     }
     Profile.create(profileFields).then(() => {
-      res.redirect('/')
+      res.redirect('/users')
     })
   },
 
@@ -47,28 +47,25 @@ module.exports = {
   // change photo
   editPhoto: (req, res) => {
     User.findByIdAndUpdate(req.user.id, req.user).then(user => {
-      res.redirect('/user/' + user.id)
+      res.redirect('/users/' + user.id)
     })
   },
 
   // Send message
-
-
-
   // delete account
   deleteAccount: (req, res) => {
     Profile.findOneAndRemove({ user: req.user.id }).then(() => {
       User.findByIdAndRemove(req.user.id).then(() => {
-        res.redirect('/')
+        res.redirect('/users')
       })
     })
   },
 
   requireAuth: function (req, res, next) {
     if (req.isAuthenticated()) {
-      // return next()
+      return next()
     } else {
-      res.redirect('/')
+      res.redirect('/users')
     }
   }
 

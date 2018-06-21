@@ -1,6 +1,6 @@
 // const User = require('../models/users')
 const passport = require('passport')
-require('../config/passport')(passport) 
+require('../config/passport')(passport)
 
 module.exports = {
   // go home
@@ -17,7 +17,7 @@ module.exports = {
   signup: (req, res) => {
     var signupStrategy = passport.authenticate('local-signup', {
       successRedirect: '/profiles/new',
-      failureRedirect: '/signup',
+      failureRedirect: '/users/signup',
       failureFlash: true
     })
     return signupStrategy(req, res)
@@ -31,8 +31,8 @@ module.exports = {
   // handle login login
   login: (req, res, next) => {
     var loginProperty = passport.authenticate('local-login', {
-      successRedirect: '/',
-      failureRedirect: '/login',
+      successRedirect: '/users',
+      failureRedirect: '/users/login',
       failureFlash: true
     })
     return loginProperty(req, res, next)
@@ -41,11 +41,9 @@ module.exports = {
   // GET /logout
   logout: (req, res) => {
     req.logout()
-    res.redirect('/')
+    res.redirect('/users')
   }
 
   // search
 
 }
-
-
