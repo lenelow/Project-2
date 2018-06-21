@@ -1,3 +1,25 @@
-nav {
-    display: inline;
+ul {
+    text-align: left;
+}
+li {
+    display: inline-block;
+    margin: 10px;
+    font-size: 20px;
+}
+
+.loginForm {
+    margin-top: 4vh;
+    width: 40%;
+}
+
+h1 {
+    font-size: 40px;
+    text-align: right;
+    width: 30vw;
+    float: right;
+    margin-right: 20px;
+}
+
+.login {
+    margin-top: 9vh;
 }

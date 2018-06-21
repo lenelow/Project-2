@@ -20,47 +20,55 @@ module.exports = function (passport) {
     dogField: 'dogs',
     passReqToCallback: true // pass request to callback function
   }, function (req, email, password, callback) {
-    User.findOne({ email }), function(err, user) {
+    User.findOne({ email }, function(err, user) {
       if (err) return callback(err)
       if (user) {
         return callback(null, false,
           req.flash('signupMessage', 'This email is already taken'))
       } else {
         let newUser = new User()
-                newUser.email = email
-                newUser.password = newUser.encrypt(password)
-                newUser.name = req.body.name
-                newUser.avatar = req.body.avatar
-                newUser.dogs = []
-            
+        newUser.email = email
+        newUser.password = newUser.encrypt(password)
+        newUser.name = req.body.name
+        newUser.avatar = req.body.avatar
+        newUser.dogs = []
+    
 
-                newUser.save(function (err) {
+        newUser.save(function (err) {
           if (err) throw err
-          return callback(null, newUser,
-            req.flash('errorMessage', 'error'))
+          return callback(null, newUser, req.flash('errorMessage', 'error'))
         })
       }
-    }
-  }))
+    })
+  })
+)
 
   passport.use('local-login', new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true
-  }, function (req, email, password, user, callback) {
-    User.findOne({ email }), function (err, user) {
-      if (err) {
-        return callback(err)
-      }
+  }, function (req, email, password, callback) {
 
-    if (!user) {
-      return callback(null, false, req.flash('loginMessage', 'No user exists with that email'))
-    }
-    if (!user.validPassword(password)) {
-      return callback(null, false, req.flash('loginMessage', 'Wrong password. Try again.'))
-    }
 
-    return callback(null, user)
-  })
-}))  
+    
+    User.findOne({ email })
+      .then(function (err, user) {
+        console.log('i am here')
+        console.log(user)
+        console.log(err)
+        if (err) {
+          return callback(err)
+        }
+
+        if (!user) {
+          return callback(null, false, req.flash('loginMessage', 'No user exists with that email'))
+        }
+        if (!user.validPassword(password)) {
+          return callback(null, false, req.flash('loginMessage', 'Wrong password. Try again.'))
+        }
+
+        return callback(null, user)
+      })
+  })  
+  )
 }
