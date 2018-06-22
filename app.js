@@ -21,9 +21,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'hbs')
 
 app.use(session({
-  secret: 'DOG-EAT-DOG-WORLD',
-  resave: false,
-  saveUninitialized: true
+  secret: 'DOG-EAT-DOG-WORLD'
 })) // session middleware
 app.use(flash())
 app.use(express.json())
@@ -44,7 +42,7 @@ app.use(function (req, res, next) {
   next()
 })
 
-// error handler
+//error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message

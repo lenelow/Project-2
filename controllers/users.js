@@ -31,7 +31,7 @@ module.exports = {
   // handle login login
   login: (req, res, next) => {
     var loginProperty = passport.authenticate('local-login', {
-      successRedirect: '/users',
+      successRedirect: '/',
       failureRedirect: '/users/login',
       failureFlash: true
     })

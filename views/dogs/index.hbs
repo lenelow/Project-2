@@ -1,6 +1,14 @@
+<li><a href="/profiles/{{id}}">My Profile</a></li>
 <h1>Browse Dogs</h1>
 <ul class="dogList">
-  {{#each dog}}
-    <li>{{this}}</li>
-  {{/each}}
+   {{#each dogs as |dog|}}
+        <ul>
+            <li>{{dog.name}}</li> 
+            <li>{{dog.age}}</li>
+            <li>{{dog.weight}}</li> 
+            <li>{{dog.breed}}</li>
+            <li>{{dog.avatar}}</li>
+            <li>{{dog.additionalInfo}}</li>
+        </ul>
+    {{/each}}
 </ul>

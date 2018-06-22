@@ -1,8 +1,8 @@
 var mongoose = require('../db/connection')
 const Schema = mongoose.Schema
-const DogSchema = require('./dogs')
+const Dog = require('./dogs')
 const bcrypt = require('bcrypt-nodejs')
-
+let DogSchema = Dog.DogSchema
 const UserSchema = new Schema({
   name: {
     type: String,

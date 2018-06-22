@@ -33,11 +33,11 @@ li {
 }
 
 .signupForm {
-    width: 50vw;
+    width: 45vw;
 }
 
 .button {
-    background-color: #B8C7C2;
+    background-color: #CBDBD6;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-    border-color: black;
+    /* border-color: black; */
 }

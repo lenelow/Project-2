@@ -1,9 +1,18 @@
 <div class="showUserDogs">
     <a class="user-dogs-title" href="/dogs/{{id}}"></a>
     <h1>{{user.name}}'s dogs</h1>
-    <ul>{{user.dogs}}</ul>
+    {{#each dogs as |dog|}}
+        <ul>
+            <li>{{dog.name}}</li> 
+            <li>{{dog.age}}</li>
+            <li>{{dog.weight}}</li> 
+            <li>{{dog.breed}}</li>
+            <li>{{dog.avatar}}</li>
+            <li>{{dog.additionalInfo}}</li>
+        </ul>
+    {{/each}}
    </div>
 <div class="linkTo">
     <a href="/profiles/show" class="viewUserDogs">Back to {{user.name}}'s profile</a>
-    <a href="dogs/show" class="viewDog">View {{user.dogs.name}}'s profile</a>
+    <a href="dogs/show" class="viewDog">View {{dogs.name}}'s profile</a>
 </div>

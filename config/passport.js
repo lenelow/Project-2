@@ -4,11 +4,14 @@ var User = require('../models/users')
 module.exports = function (passport) {
   passport.serializeUser(function (user, callback) {
     callback(null, user.id)
+    console.log(user._id) 
   })
 
   passport.deserializeUser(function (id, callback) {
     User.findById(id, function (err, user) {
       callback(err, user)
+      console.log(user._id) 
+      console.log('stuff: ',id) 
     })
   })
 
@@ -20,7 +23,7 @@ module.exports = function (passport) {
     dogField: 'dogs',
     passReqToCallback: true // pass request to callback function
   }, function (req, email, password, callback) {
-    User.findOne({ email }, function(err, user) {
+    User.findOne({ email }, function (err, user) {
       if (err) return callback(err)
       if (user) {
         return callback(null, false,
@@ -52,13 +55,9 @@ module.exports = function (passport) {
 
     
     User.findOne({ email })
-      .then(function (err, user) {
+      .then(function (user) {
         console.log('i am here')
         console.log(user)
-        console.log(err)
-        if (err) {
-          return callback(err)
-        }
 
         if (!user) {
           return callback(null, false, req.flash('loginMessage', 'No user exists with that email'))
@@ -69,6 +68,6 @@ module.exports = function (passport) {
 
         return callback(null, user)
       })
-  })  
+  })
   )
 }

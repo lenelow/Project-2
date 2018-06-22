@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const userController = require('../controllers/users')
-var multer = require('multer')
-var upload = multer({ dest: './public/images'})
+const multer = require('multer')
+const upload = multer({ dest: './public/images' })
 
 router.get('/', userController.goHome)// go home
 router.get('/login', userController.loginForm)// render login form

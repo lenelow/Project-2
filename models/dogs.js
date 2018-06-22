@@ -7,7 +7,7 @@ const DogSchema = new Schema({
     required: true
   },
   weight: {
-    type: Number,
+    type: String,
     required: true
   },
   age: {
@@ -28,10 +28,10 @@ const DogSchema = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'User'
+    ref: 'Users'
   }
 })
 
 const Dog = mongoose.model('Dogs', DogSchema)
-module.exports = Dog
-module.exports = DogSchema
+module.exports = { Dog: Dog, DogSchema: DogSchema }
+

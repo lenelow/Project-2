@@ -4,15 +4,17 @@ const User = require('../models/users')
 module.exports = {
   // display user profile
   show: (req, res) => {
-    Profile.findOne({ user: req.params.id })
-      .populate('user', ['name', 'avatar'])
+    Profile.findOne({ user: req.user.id })
+      .populate('user')
       .then(function (profile) {
-        res.render('profiles/show', { profile })
+        res.render('profiles/show', { profile, user: req.user })
       })
   },
 
-  new: (req, res) => { // render new profile form
+  newForm: (req, res) => { // render new profile form
+    console.log('stuff')
     res.render('profiles/profileForm')
+    console.log(req.user)
   },
 
   // Handle profile create
@@ -29,7 +31,7 @@ module.exports = {
       profileFields.interests = req.body.interests
     }
     Profile.create(profileFields).then(() => {
-      res.redirect('/users')
+      res.redirect('/')
     })
   },
 
@@ -47,16 +49,19 @@ module.exports = {
   // change photo
   editPhoto: (req, res) => {
     User.findByIdAndUpdate(req.user.id, req.user).then(user => {
-      res.redirect('/users/' + user.id)
+      res.redirect('/user/' + user.id)
     })
   },
 
   // Send message
+
+
+
   // delete account
   deleteAccount: (req, res) => {
     Profile.findOneAndRemove({ user: req.user.id }).then(() => {
       User.findByIdAndRemove(req.user.id).then(() => {
-        res.redirect('/users')
+        res.redirect('/')
       })
     })
   },
@@ -65,7 +70,7 @@ module.exports = {
     if (req.isAuthenticated()) {
       return next()
     } else {
-      res.redirect('/users')
+      res.redirect('/')
     }
   }
 

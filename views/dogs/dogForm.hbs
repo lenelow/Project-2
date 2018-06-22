@@ -5,15 +5,18 @@
     <p class="alert">{{message}}</p>
   {{/if}}
   
-  <form action="/" method="POST" class="auth-form">
+  <form action="/dogs" method="post" class="auth-form">
     <p class="input-field">
       <input type="text" name="name" placeholder="Name" id="name">
     </p>
     <p class="input-field">
-      <textarea name="bio" placeholder="Tell us about your dog...">
+      <textarea name="bio" ></textarea>
     </p>
     <p class ="input-field">
-      <input type="number" name="weight" placeholder="Weight" id="weight">
+      <input type="text" name="weight" placeholder="Weight" id="weight">
+    </p>
+    <p class ="input-field">
+      <input type="text" name="breed" placeholder="Breed" id="breed">
     </p>
     <p class ="input-field">
       <input type="number" name="age" placeholder="Age" id="age">
