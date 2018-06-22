@@ -2,11 +2,13 @@
   <div class="profile-content">
     <a class="profile-title" href="/profile/{{currentUser.id}}"></a>
     <h1>{{user.name}}</h1>
+    {{#each user.avatar}}
+    {{> "avatar"}}
+    {{/each}}
     <img src="/images/{{user.avatar}}" alt="Profile Photo">
     <h2>{{user.location.zipcode}}</h2>
     <p>{{user.bio}}</p>
     <p>{{user.interests}}</p>
-   </div>
   <div class="linkTo">
     <a href="/dogs/user" class="viewUserDogs">View {{user.name}}'s dogs</a>
     <a href="/profiles/draftMessageForm" class="sendMessage">Contact {{user.name}}</a>
@@ -14,5 +16,6 @@
     <a href="/profile/messages" class="viewMessages">My Messages</a>
     <a href="/dogs/new" class="addDogs">Add Dog</a>
     {{/if}}
+    </div>
   </div>
 </div>

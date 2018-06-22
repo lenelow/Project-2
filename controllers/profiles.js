@@ -12,7 +12,6 @@ module.exports = {
   },
 
   newForm: (req, res) => { // render new profile form
-    console.log('stuff')
     res.render('profiles/profileForm')
     console.log(req.user)
   },

@@ -1,13 +1,13 @@
-<li><a href="/profiles/{{id}}">My Profile</a></li>
-<h1>Browse Dogs</h1>
-<ul class="dogList">
-   {{#each dogs as |dog|}}
+<li><a href="/profiles/{{id}}">Back to My Profile</a></li>
+<h1>Browse Humans</h1>
+<ul class="humanList">
+   {{#each users as |user|}}
         <ul>
             <li>{{dog.name}}</li> 
             <li>{{dog.age}}</li>
             <li>{{dog.weight}}</li> 
             <li>{{dog.breed}}</li>
-            <li><img src={{dog.avatar}}></li>
+            <li>{{dog.avatar}}</li>
             <li>{{dog.additionalInfo}}</li>
         </ul>
     {{/each}}

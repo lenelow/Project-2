@@ -41,7 +41,7 @@ module.exports = {
   // GET /logout
   logout: (req, res) => {
     req.logout()
-    res.redirect('/users')
+    res.redirect('/')
   }
 
   // search

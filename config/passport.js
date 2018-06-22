@@ -10,8 +10,7 @@ module.exports = function (passport) {
   passport.deserializeUser(function (id, callback) {
     User.findById(id, function (err, user) {
       callback(err, user)
-      console.log(user._id) 
-      console.log('stuff: ',id) 
+      console.log(user._id)
     })
   })
 
@@ -51,9 +50,6 @@ module.exports = function (passport) {
     passwordField: 'password',
     passReqToCallback: true
   }, function (req, email, password, callback) {
-
-
-    
     User.findOne({ email })
       .then(function (user) {
         console.log('i am here')

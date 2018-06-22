@@ -43,7 +43,9 @@ module.exports = { // object of functions for routes
   },
 
   create: (req, res) => { // handles add dog
+    console.log(req.file)
     var dogFields = {}
+    
     dogFields.user = req.user._id
     dogFields.name = req.body.name
     dogFields.weight = req.body.weight

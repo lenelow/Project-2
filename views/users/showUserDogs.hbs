@@ -4,10 +4,10 @@
     {{#each dogs as |dog|}}
         <ul>
             <li>{{dog.name}}</li> 
-            <li>{{dog.age}}</li>
-            <li>{{dog.weight}}</li> 
+            <li>{{dog.weight}}</li>
+            <li>{{dog.age}}</li> 
             <li>{{dog.breed}}</li>
-            <li>{{dog.avatar}}</li>
+            <li><img src="{{dog.avatar}}" alt=""></li>
             <li>{{dog.additionalInfo}}</li>
         </ul>
     {{/each}}

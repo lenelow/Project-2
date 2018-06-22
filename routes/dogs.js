@@ -2,8 +2,7 @@ const express = require('express')
 const router = express.Router()
 const dogController = require('../controllers/dogs.js')
 const multer = require('multer')
-const upload = multer({ dest: './public/images' })
-
+const upload = multer({ dest: __dirname + '/public/images' })
 
 router.get('/', dogController.requireAuth, dogController.show)// browse dog profiles
 router.get('/new', dogController.requireAuth, dogController.createForm)// render form for adding new dog to account
@@ -13,6 +12,5 @@ router.get('/:id/edit', dogController.requireAuth, dogController.editForm)// ren
 router.put('/:id', dogController.requireAuth, dogController.edit)// update dog profile in database
 router.delete('/:id', dogController.requireAuth, dogController.destroy)// delete dog profile from database
 router.get('/:id', dogController.requireAuth, dogController.showDog)// show specific dog
-
 
 module.exports = router

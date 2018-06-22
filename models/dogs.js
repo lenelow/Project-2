@@ -20,7 +20,7 @@ const DogSchema = new Schema({
   },
   avatar: {
     type: String,
-    required: true
+    required: false
   },
   additionalInfo: {
     type: String,
