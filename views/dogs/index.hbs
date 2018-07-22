@@ -2,13 +2,15 @@
 <h1>Browse Dogs</h1>
 <ul class="dogList">
    {{#each dogs as |dog|}}
+        <a href="/dogs/{{dog._id}}">
         <ul>
             <li>{{dog.name}}</li> 
             <li>{{dog.age}}</li>
             <li>{{dog.weight}}</li> 
             <li>{{dog.breed}}</li>
-            <li><img src={{dog.avatar}}></li>
+            <li><img src="/uploads/{{dog.avatar}}"></li>
             <li>{{dog.additionalInfo}}</li>
         </ul>
+        </a>
     {{/each}}
 </ul>
