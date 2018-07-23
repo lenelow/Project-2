@@ -2,12 +2,14 @@ const express = require("express");
 const router = express.Router();
 const dogController = require("../controllers/dogs.js");
 const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: "./uploads/",
-  filename: function(req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
+var storage =   multer.diskStorage({
+    destination: function (req, file, callback) {
+      callback(null, './uploads');
+    },
+    filename: function (req, file, callback) {
+      callback(null, file.originalname);
+    }
+  });
 const upload = multer({ storage });
 
 router.get("/", dogController.requireAuth, dogController.show); // browse dog profiles
@@ -23,5 +25,6 @@ router.get("/:id/edit", dogController.requireAuth, dogController.editForm); // r
 router.put("/:id", dogController.requireAuth, dogController.edit); // update dog profile in database
 router.delete("/:id", dogController.requireAuth, dogController.destroy); // delete dog profile from database
 router.get("/:id", dogController.requireAuth, dogController.showDog); // show specific dog
+router.get("/", dogController.requireAuth, dogController.search);
 
 module.exports = router;

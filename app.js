@@ -35,7 +35,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cookieParser());
 app.use(methodOverride("_method"));
-app.use(express.static("/uploads"));
+app.use(express.static("uploads"));
 require("./config/passport")(passport);
 
 app.use(function(req, res, next) {

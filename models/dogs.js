@@ -1,5 +1,5 @@
-const mongoose = require('../db/connection')
-const Schema = mongoose.Schema
+const mongoose = require("../db/connection");
+const Schema = mongoose.Schema;
 
 const DogSchema = new Schema({
   name: {
@@ -28,10 +28,11 @@ const DogSchema = new Schema({
   },
   user: {
     type: Schema.Types.ObjectId,
-    ref: 'Users'
+    ref: "Users"
   }
-})
+});
 
-const Dog = mongoose.model('Dogs', DogSchema)
-module.exports = { Dog: Dog, DogSchema: DogSchema }
+DogSchema.index({ weight: 'text'});
 
+const Dog = mongoose.model("Dogs", DogSchema);
+module.exports = { Dog: Dog, DogSchema: DogSchema };

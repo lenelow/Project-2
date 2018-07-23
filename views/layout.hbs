@@ -16,11 +16,13 @@
         <div class="nav-wrapper">
           <ul class="right">
           {{#if currentUser}}
-            <li><a href="/search/">Find users near you</a></li>
+            <li><a href="/">Find Dogs</a></li>
             <i class="fa fa-paw" aria-hidden="true"></i>
             <li><a href="/users/logout">Log Out</a></li>
             <i class="fa fa-paw" aria-hidden="true"></i>
             <li><a href="/profile/profileForm">Settings</a></li>
+            <i class="fa fa-paw" aria-hidden="true"></i>
+            <li><a href="/profiles/userId">My Profile</a></li>
             <i class="fa fa-paw" aria-hidden="true"></i>
           {{else}}
             <li><a href="/users/login">Log In</a></li>
@@ -29,7 +31,7 @@
             <i class="fa fa-paw" aria-hidden="true"></i>
           {{/if}}
           </ul>
-          <h1 class="logo">DoggyDate</h1>
+          <h1 class="logo"><a href="/">DoggyDate</a></h1>
         </div>
       </nav>
     </header>

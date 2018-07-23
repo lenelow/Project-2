@@ -20,6 +20,15 @@ li {
     margin-right: 20px;
     font-family: 'Comfortaa', cursive;
     margin-top: -25px;
+    color: black;
+}
+
+.logo a {
+    color: black;
+}
+
+.logo a:hover {
+    text-decoration: none;
 }
 
 .login {

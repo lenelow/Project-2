@@ -14,7 +14,7 @@ module.exports = {
   },
   show: (req, res) => {
     // show all dogs
-    Dogs.find({}).then(function(dog) {
+    Dogs.find(makeQuery(req)).then(function(dog) {
       Profile.findOne({ user: req.user.id }).then(function(profile) {
         res.render("dogs/index", { dogs: dog, id: profile._id });
         console.log(dog);
@@ -86,6 +86,14 @@ module.exports = {
       });
     });
   },
+  search: (req, res) => {
+    Dogs.find({}).then(function(dog) {
+      Profile.findOne({ user: req.user.id }).then(function(profile) {
+        res.render("dogs/index", { dogs: dog, id: profile._id });
+        console.log(dog);
+      });
+    });
+  },
   requireAuth: function(req, res, next) {
     if (req.isAuthenticated()) {
       return next();
@@ -93,4 +101,12 @@ module.exports = {
       res.redirect("/");
     }
   }
+};
+
+const makeQuery = req => {
+  const query = {};
+  if (req.query) {
+    query.$text = { $search: req.query.search };
+  }
+  return query;
 };
