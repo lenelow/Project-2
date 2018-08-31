@@ -1,1 +1,3 @@
-# Project-2 tbd
+# Project-2 DoggyDate
+
+This is DoggyDate, a social media app that helps dog owners and dog lovers can get together so users--and their dogs--can socialize. This is the only application I've built using Express, which was challenging for me. Although Express doesn't come as naturally to me as some of the other technologies I've studied, with a little extra effort I was able to figure it out. I styled using CSS and Bootstrap, and I used Handlbars to render my views. Learning Handlebars meant teaching myself something I would never use again-- something my instructors said happens frequently in this line of work. It's only partially functional, with a lot to implement before it's finished. I also plan to replace Handlbars with React. Much like Fitness Friends, although the project is incomplete, there's a lot of code I'm proud of--in this case, my work in Express.
